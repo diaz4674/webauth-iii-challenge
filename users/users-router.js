@@ -14,9 +14,6 @@ router.use(helmet())
 router.use(express.json())
 router.use(cors())
 
-router.get('/', (req, res) => {
-    res.send('Hello World!')
-})
 
 generateToken = (user) => {
     return jwt.sign({
@@ -37,7 +34,7 @@ router.post('/register', (req, res) => {
 
         res.status(200).json({
             message: `Welcome ${user.username}`,
-            authToken: token
+            token: token
         })
     })
     .catch(err => {
@@ -57,7 +54,7 @@ router.post('/login', (req, res) => {
                     
                 res.status(200).json({
                     message: `Welcome ${user.username}`,
-                    authToken: token
+                     token: token
                 })
                 
             } else {
